@@ -1,0 +1,23 @@
+<div class="p-2">
+    <div *ngIf="party$ | async; let party">
+        <table class="table table-sm">
+        <tr>
+            <th>Name</th>
+            <td>{{party?.name  }}</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>{{party?.category  }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{party?.description }}</td>
+        </tr>
+        </table>
+    </div>
+    <!-- <table class="table table-sm">
+    <tr><th>Name</th><td>{{party?.name | async }}</td></tr>
+    <tr><th>Category</th><td>{{party?.category | async }}</td></tr>
+    <tr><th>Description</th><td>{{party?.description | async }}</td></tr>
+    </table> -->
+</div>

@@ -1,0 +1,50 @@
+version: "3"
+services:
+    frontend:
+        image: tester8cortex/coupman-ui:0.0.1
+        networks:
+            - overlay
+        depends_on:
+            - backend
+        ports:
+          - "8080:80"
+    
+    backend:
+        image: tester8cortex/coupman-api:0.0.1
+        networks:
+            - overlay
+        depends_on:
+            - postgres-db
+        ports:
+          - "5051:80"
+    
+    postgres-db:
+        image: postgres
+        environment:
+          POSTGRES_PASSWORD: password
+        volumes:
+          - postgres:/var/lib/postgresql/data
+          - ./webapi/script:/docker-entrypoint-initdb.d/
+        ports:
+          - "5432:5432"
+        networks:
+          - overlay
+    
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+          PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+          PGADMIN_DEFAULT_PASSWORD: admin
+        volumes:
+          - pgadmin:/root/.pgadmin
+        ports:
+          - "5050:80"
+        networks:
+          - overlay
+
+networks:
+  overlay:
+
+volumes:
+  postgres:
+  pgadmin:
