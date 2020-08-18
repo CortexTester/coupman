@@ -18,5 +18,8 @@ cd webapi -- docker build -t tester8cortex/coupman-api:0.0.1 .
 cd webui -- docker build -t tester8cortex/coupman-ui:0.0.1 .
 cd coupman docker-compose up
 
+*** 
+http://calman.canadacentral.cloudapp.azure.com:8080/
+
 1. database host in api -- workround is using docker-compose name
 2. database is not exist --when api up,
