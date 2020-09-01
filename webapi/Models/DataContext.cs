@@ -5,7 +5,7 @@ namespace webapi.Models
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
-        public DbSet<Party> Parties { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
 

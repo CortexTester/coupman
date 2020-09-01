@@ -18,11 +18,11 @@ namespace webapi.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("webapi.Models.Party", b =>
+            modelBuilder.Entity("webapi.Models.User", b =>
                 {
-                    b.Property<long>("PartyId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Category")
@@ -31,12 +31,35 @@ namespace webapi.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("PartyId");
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
 
-                    b.ToTable("Parties");
+                    b.Property<string>("IdentityId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PartyName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

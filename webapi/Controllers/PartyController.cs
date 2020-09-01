@@ -29,9 +29,9 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Party> Get() => coupmanRepository.Parties.ToArray();
+        public IEnumerable<User> Get() => coupmanRepository.Users.ToArray();
 
         [HttpGet("{id}")]
-        public Party GetParty(long id) => coupmanRepository.Parties.FirstOrDefault(p=>p.PartyId == id);
+        public User GetParty(long id) => coupmanRepository.Users.FirstOrDefault(p=>p.Id == id);
     }
 }

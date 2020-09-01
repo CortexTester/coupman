@@ -17,24 +17,24 @@ namespace webapi.Models
                 context.Database.Migrate();
             }
 
-            if (!context.Parties.Any())
-            {
-                context.Parties.AddRange(
-                    new Party
-                    {
-                        Name = "Mega Roffing",
-                        Category = "Construction",
-                        Description = "Roffing company"
-                    }, 
-                     new Party
-                    {
-                        Name = "Oildex Solutions",
-                        Category = "Software",
-                        Description = "Open Invoice"
-                    }
-                );
-                context.SaveChanges();
-            }
+            // if (!context.Users.Any())
+            // {
+            //     context.Users.AddRange(
+            //         new User
+            //         {
+            //             Name = "Mega Roffing",
+            //             Category = "Construction",
+            //             Description = "Roffing company"
+            //         }, 
+            //          new User
+            //         {
+            //             Name = "Oildex Solutions",
+            //             Category = "Software",
+            //             Description = "Open Invoice"
+            //         }
+            //     );
+            //     context.SaveChanges();
+            // }
         }
 
     }

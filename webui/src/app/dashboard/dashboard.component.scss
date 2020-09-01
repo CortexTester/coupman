@@ -1,0 +1,889 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.main {
+	display: table-row;
+	height: 100%;
+}
+.page-wrapper {
+	background-color: #fafafa;
+	display: table;
+	height: 100%;
+	overflow: hidden;
+	table-layout: fixed;
+	width: 100%;
+}
+body {
+	margin: 0;
+}
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 1.4285;
+	color: #333333;
+	background-color: #fff;
+}
+body {
+	background-color: #fff;
+	color: #868686;
+	font-family: "Roboto",Arial,sans-serif;
+	font-size: 14px;
+	height: 100%;
+	overflow-x: hidden;
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+body.custom-background {
+	background-image: url("https://klickon.ca/klickon/wp-content/uploads/2017/12/Street-of-suburb-areas.jpg");
+	background-position: left top;
+	background-size: auto;
+	background-repeat: repeat;
+	background-attachment: scroll;
+}
+html {
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+html {
+	font-size: 10px;
+	-webkit-tap-highlight-color: transparent;
+}
+html {
+	height: 100%;
+}
+.header-top-fullwidth {
+	position: relative;
+}
+.main-inner {
+	background-image: -webkit-linear-gradient(rgb(242, 242, 242) 0%, rgb(250, 250, 250) 50px);
+	background-image: -o-linear-gradient(top, #f2f2f2 0%, #fafafa 50px);
+	background-image: linear-gradient(rgb(242, 242, 242) 0%, rgb(250, 250, 250) 50px);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2F2F2', endColorstr='#FFFAFAFA', GradientType=0);
+}
+.container, .detail-banner .detail-banner-right.affix {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.hide {
+	display: none !important;
+}
+.background-white {
+	background-color: #fff;
+}
+.margin-45 {
+	margin: 45px 0px;
+}
+.background-primary {
+	background-color: #f2944e;
+	color: #fff;
+}
+.background-dark, .background-gray {
+	color: #fff;
+}
+.row, .listing-categories-cards, .listing-types-cards, .locations-posters, .listing-detail-resume-experience .listing-detail-resume-experience-levels, .blog #primary .content, .widget_faq .faq, .tab-content ul, .video-cover-filter form, .submission-choose-type ul, .user-list, .user-listings, .applicants-list, .inventor-cover-filter form {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.form-group {
+	margin-bottom: 15px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .items-per-row-6 .item-container, .items-per-row-6 .listing-container, .items-per-row-6 .listing-categories-card-container, .items-per-row-6 .listing-types-card-container, .items-per-row-6 .location-poster-container, .items-per-row-6 .user-container, .items-per-row-6 .applicant-container, .inventor-cover-filter.items-per-row-6 .form-group, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .items-per-row-4 .item-container, .items-per-row-4 .listing-container, .items-per-row-4 .listing-categories-card-container, .items-per-row-4 .listing-types-card-container, .items-per-row-4 .location-poster-container, .items-per-row-4 .user-container, .items-per-row-4 .applicant-container, .tab-content li, .inventor-cover-filter.items-per-row-4 .form-group, .col-lg-3, #primary .widget_filter .form-group, .filter .checkbox-wrapper .checkbox, .col-xs-4, .col-sm-4, .tab-content li, .col-md-4, #primary .widget_filter .form-group, .items-per-row-3 .item-container, .items-per-row-3 .listing-container, .items-per-row-3 .listing-categories-card-container, .items-per-row-3 .listing-types-card-container, .items-per-row-3 .location-poster-container, .items-per-row-3 .user-container, .items-per-row-3 .applicant-container, .listing-detail-resume-experience .listing-detail-resume-experience-level, .post-masonry, .filter .checkbox-wrapper .checkbox, .video-cover-filter .form-group, .submission-choose-type ul li, .inventor-cover-filter .form-group, .inventor-cover-filter.items-per-row-3 .form-group, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, #primary .widget_filter .form-group, .filter .checkbox-wrapper .checkbox, .submission-choose-type ul li, .col-md-6, .items-per-row-2 .item-container, .items-per-row-2 .listing-container, .items-per-row-2 .listing-categories-card-container, .items-per-row-2 .listing-types-card-container, .items-per-row-2 .location-poster-container, .items-per-row-2 .user-container, .items-per-row-2 .applicant-container, .widget_faq .faq-item-wrapper, .inventor-cover-filter.items-per-row-2 .form-group, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .items-per-row-1 .item-container, .items-per-row-1 .listing-container, .items-per-row-1 .listing-categories-card-container, .items-per-row-1 .listing-types-card-container, .items-per-row-1 .location-poster-container, .items-per-row-1 .user-container, .items-per-row-1 .applicant-container, .post-row, .filter-vertical .video-cover-filter .form-group, .filter-vertical .inventor-cover-filter .form-group, .inventor-cover-filter.items-per-row-1 .form-group, .col-lg-12 {
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.fullwidth, .widget .widget-inner, .listing-detail-menu-wrapper, .user-banner {
+	margin-left: -750px;
+	margin-right: -750px;
+	padding-left: 750px;
+	padding-right: 750px;
+}
+.widget .widget-inner {
+	background-size: cover;
+	background-position: center center;
+}
+.widget .widget-pt {
+	padding-top: 60px;
+}
+.widget .widget-pb {
+	padding-bottom: 60px;
+}
+h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+h1, h2, .comment-reply-title, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+}
+h1, .h1, h2, .comment-reply-title, .h2, h3, .h3 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+h2, .comment-reply-title, .h2 {
+	font-size: 30px;
+}
+h4, .h4, h5, .h5, h6, .h6 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+h4, .h4 {
+	font-size: 18px;
+}
+h1, .h1 {
+	font-size: 36px;
+}
+h1, h2, .comment-reply-title, h3, h4, h5, h6 {
+	color: #363636;
+}
+h1, h2, .comment-reply-title, h3 {
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+h2, .comment-reply-title {
+	font-size: 26px;
+}
+.widget .widgettitle {
+	color: #363636;
+	font-size: 36px;
+	font-weight: 300;
+	margin: 0 0 60px;
+	padding: 0;
+	text-align: center;
+}
+.widget .description {
+	font-size: 15px;
+	line-height: 24px;
+	margin: -45px 0 40px;
+	padding: 0 20%;
+	text-align: center;
+}
+/* @media all and (max-width:767px) */
+.widget .description {
+	padding: 0;
+}
+.testimonial {
+	margin: 0 0 30px 0;
+}
+:last-of-type.testimonial {
+	margin-bottom: 0px;
+}
+/* @media all and (max-width:767px) */
+:last-of-type.testimonial {
+	margin-bottom: 30px;
+}
+.testimonial-image {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-backface-visibility: hidden;
+	border-radius: 50%;
+	float: left;
+	height: 80px;
+	overflow: hidden;
+	position: relative;
+	width: 80px;
+}
+/* @media all and (max-width:767px) */
+.testimonial-image {
+	height: 50px;
+	width: 50px;
+}
+.testimonial-inner {
+	background-color: #fff;
+	border: 2px solid #f7f7f7;
+	line-height: 28px;
+	margin: 0 0 0 120px;
+	padding: 20px;
+	position: relative;
+}
+/* @media all and (max-width:767px) */
+.testimonial-inner {
+	margin: 0 0 0 70px;
+}
+.testimonial-title {
+	border-bottom: 1px solid #f7f7f7;
+	margin: 0 0 20px 0;
+	min-height: 60px;
+	padding: 0;
+}
+.testimonial-sign {
+	color: #444;
+	font-size: 13px;
+	font-style: italic;
+	font-weight: 500;
+	margin-top: 15px;
+	text-align: right;
+}
+p {
+	margin: 0 0 10px;
+}
+p {
+	line-height: 24px;
+}
+.testimonial-content p {
+	line-height: 28px;
+}
+.testimonial-title h2, .testimonial-title .comment-reply-title {
+	float: left;
+	font-size: 15px;
+	font-weight: 500;
+	margin: 13px 0 0 0;
+	text-transform: uppercase;
+}
+.testimonial-rating {
+	color: #00aced;
+	float: right;
+	margin-top: 7px;
+}
+a {
+	background-color: transparent;
+}
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+a {
+	color: #f2944e;
+	transition: color .15s linear;
+}
+i, a {
+	transition: all linear .15s;
+}
+.fa, .fa-stack {
+	display: inline-block;
+}
+.fa {
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+b, strong {
+	font-weight: bold;
+}
+/* @media all and (max-width:1199px) */
+.box {
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+.box-icon {
+	background-color: #fff;
+	border: 1px solid #f0f0f0;
+	border-radius: 50%;
+	color: #f2944e;
+	float: left;
+	font-size: 34px;
+	height: 72px;
+	line-height: 68px;
+	margin: 0 20px 0 0;
+	position: relative;
+	text-align: center;
+	width: 72px;
+}
+.boxes-numbers .box-icon {
+	background-color: transparent;
+	border: none;
+	color: #fff;
+	font-size: 40px;
+	height: 50px;
+}
+.boxes-centered .box-icon, .boxes-numbers .box-icon, .boxes-condensed .box-icon {
+	float: none;
+	margin: 0 auto;
+}
+.box-body {
+	display: table-cell;
+}
+.boxes-centered .box-body, .boxes-numbers .box-body, .boxes-condensed .box-body {
+	display: block;
+}
+h4, h5, h6 {
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+h4 {
+	font-size: 18px;
+}
+.background-dark .widgettitle, .background-gray .widgettitle, .background-dark .box-title, .background-gray .box-title {
+	color: #fff !important;
+}
+.box-body .box-title {
+	font-size: 24px;
+	font-weight: 400;
+	margin: 24px 0 20px 0;
+}
+.boxes-numbers .box-body .box-title {
+	font-size: 15px;
+	letter-spacing: 2px;
+	margin: 15px 0 10px 0;
+}
+.boxes-centered .box-body .box-title, .boxes-numbers .box-body .box-title, .boxes-condensed .box-body .box-title {
+	text-align: center;
+}
+.box-number {
+	font-size: 38px !important;
+	font-weight: bold !important;
+	line-height: 1;
+}
+.boxes-centered .box-body .box-number, .boxes-numbers .box-body .box-number, .boxes-condensed .box-body .box-number {
+	font-size: 20px;
+	text-align: center;
+}
+.box-icon .fa {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+}
+.widget .textwidget {
+	line-height: 24px;
+}
+.features-box {
+	margin: 0px -15px;
+	margin-top: -15px;
+}
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+	float: left;
+}
+.col-xs-12 {
+	width: 100%;
+}
+.features-box .col-md-4 span, .features-box .col-md-6 span {
+	display: block;
+	position: relative;
+	padding: 40px 15px;
+	background: #ffffff;
+	border: 2px solid #f2944e;
+	font-size: 20px;
+	text-align: center;
+	color: #222222;
+	margin: 10px 0px;
+}
+.features-box .col-md-6 span.pad_down {
+	padding-top: 28px;
+	padding-bottom: 28px;
+}
+.partners-row {
+	clear: both;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.partners-container {
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	position: relative;
+	width: 100%;
+}
+/* @media all and (max-width:767px) */
+.widget_partners .partners-container {
+	float: none;
+	padding: 15px 0;
+	width: 100% !important;
+}
+.items-per-row-5 .partners-container {
+	width: 20%;
+}
+.widget_partners a {
+	opacity: 0.8;
+	vertical-align: middle;
+	text-align: center;
+	transition: all .15s linear;
+}
+/* @media all and (max-width:767px) */
+.widget_partners a {
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+/* @media all and (max-width:767px) */
+.widget_partners a:last-child {
+	margin-bottom: 0px;
+}
+img {
+	border: 0;
+}
+img {
+	vertical-align: middle;
+}
+.widget img {
+	max-width: 100%;
+	height: auto;
+}
+.widget_partners img {
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	max-width: 80%;
+}
+/* @media all and (max-width:767px) */
+.widget_partners img {
+	max-height: inherit;
+	max-width: 35%;
+}
+.widget_inventor_cover {
+	position: relative;
+}
+.cover-widget-append-top .widget_inventor_cover {
+	margin-top: -135px;
+}
+.header-button-section {
+	position: absolute;
+	bottom: 15px;
+	width: 100%;
+	text-align: center;
+	padding: 15px 15px;
+	z-index: 10;
+}
+:last-of-type.widget {
+	margin-bottom: 0px;
+}
+.signup-button {
+	padding: 12px 15px 8px 15px;
+	display: inline-block;
+	background: #f2944e;
+	color: #ffffff;
+	font-size: 18px;
+	text-transform: uppercase;
+	line-height: 24px;
+	margin: 10px;
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+	border-radius: 2px;
+}
+.inventor-cover {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 550px;
+	position: relative;
+	overflow: hidden;
+}
+.inventor-cover-title {
+	color: #fff;
+	left: 50%;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+    z-index: 91;
+}
+/* @media all and (max-width:767px) */
+.inventor-cover-title {
+	width: 100%;
+}
+.cover-widget-append-top .inventor-cover-title {
+	margin-top: 62px;
+}
+h1 {
+	font-size: 30px;
+}
+.inventor-cover-title h1 {
+	color: #fff;
+	font-weight: 400;
+	font-size: 60px;
+	padding: 0 15px;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
+}
+/* @media all and (max-width:991px) */
+.inventor-cover-title h1 {
+	font-size: 40px;
+}
+/* @media all and (max-width:767px) */
+.inventor-cover-title h1 {
+	font-size: 30px;
+}
+.inventor-cover-title h2, .inventor-cover-title .comment-reply-title {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 23px;
+	font-weight: 400;
+	line-height: 1.5;
+	padding: 0 15px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+/* @media all and (max-width:991px) */
+.inventor-cover-title h2, .inventor-cover-title .comment-reply-title {
+	font-size: 20px;
+}
+/* @media all and (max-width:767px) */
+.inventor-cover-title h2, .inventor-cover-title .comment-reply-title {
+	font-size: 16px;
+}
+.inventor-cover-filter form {
+	margin-top: 80px;
+	margin-left: auto;
+	margin-right: auto;
+}
+button, input, optgroup, select, textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+}
+button {
+	overflow: visible;
+}
+button, select {
+	text-transform: none;
+}
+button, html input[type='button'], input[type='reset'], input[type='submit'] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+input {
+	line-height: normal;
+}
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+.btn, input[type=submit], button, .ui-datepicker-buttonpane button, .cmb-row.postbox .cmb-remove-group-row, .listing-create, .listings-slider-item-info-more a, .payment-process, .inventor-slider-item-info-button a, .btn-create-collection {
+	display: inline-block;
+	margin-bottom: 0px;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.4285;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+.btn-primary, .button, input[type=submit], button, .fileinput-upload-button, .listing-create, .listing-detail-gallery-preview .owl-next, .listing-detail-gallery-preview .owl-prev, .listings-slider-item-info-more a, .coupon-detail-gallery-preview .owl-next, .coupon-detail-gallery-preview .owl-prev, .inventor-slider-item-info-button a, .btn-create-collection {
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+.btn, input[type=submit], button, .ui-datepicker-buttonpane button, .cmb-row.postbox .cmb-remove-group-row, .listing-create, .listings-slider-item-info-more a, .payment-process, .inventor-slider-item-info-button a, .btn-create-collection {
+	border: 0;
+	border-radius: 0;
+	min-height: 40px;
+	padding: 9px 15px;
+	position: relative;
+	transition: background-color .15s linear;
+}
+.btn-primary, .button, input[type=submit], button, .fileinput-upload-button, .listing-create, .listing-detail-gallery-preview .owl-next, .listing-detail-gallery-preview .owl-prev, .listings-slider-item-info-more a, .coupon-detail-gallery-preview .owl-next, .coupon-detail-gallery-preview .owl-prev, .inventor-slider-item-info-button a, .btn-create-collection {
+	background-color: #f2944e;
+	display: inline-block;
+	padding: 9px 15px;
+	transition: background-color .15s linear;
+}
+.button {
+	display: block;
+	margin-bottom: 20px;
+}
+.inventor-cover-filter .form-group button.button {
+	font-size: 15px;
+	font-weight: 500;
+	padding: 14px;
+	width: 100%;
+}
+.bootstrap-select {
+	width: 220px \0;
+}
+.form-control, input[type=text], input[type=email], input[type=number], input[type=url], input[type=date], input[type=password], textarea {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.4285;
+	color: #555555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	-o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.btn-group, .btn-group-vertical {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.form-control, input[type=text], input[type=email], input[type=number], input[type=url], input[type=date], input[type=password], textarea {
+	box-shadow: none;
+	border-radius: 0;
+	border: 1px solid #e9e9e9;
+	height: 40px;
+	line-height: 20px;
+	transition: all linear .15s;
+}
+select.bs-select-hidden, select.selectpicker {
+	display: none !important;
+}
+select.bs-select-hidden, select.selectpicker {
+	display: block !important;
+	margin-top: 32px !important;
+	margin-left: 20px !important;
+	opacity: 0;
+	position: absolute !important;
+}
+.bootstrap-select .bs-searchbox input {
+	padding-left: 35px;
+}
+.inventor-cover-filter .form-group input, .inventor-cover-filter .form-group select {
+	padding: 11px 20px;
+}
+:not([class*=col-]).bootstrap-select.form-control {
+	width: 100%;
+}
+:not(.input-group-btn).bootstrap-select.btn-group, [class*=col-].bootstrap-select.btn-group {
+	float: none;
+	display: inline-block;
+	margin-left: 0px;
+}
+.form-group .bootstrap-select.btn-group, .form-horizontal .bootstrap-select.btn-group, .form-inline .bootstrap-select.btn-group {
+	margin-bottom: 0px;
+}
+.inventor-cover-filter .form-group .bootstrap-select .dropdown-toggle, .inventor-cover-filter .form-group input {
+	height: 49px;
+}
+.inventor-cover-filter .form-group .bootstrap-select .btn, .inventor-cover-filter .form-group .bootstrap-select input[type=submit], .inventor-cover-filter .form-group .bootstrap-select button, .inventor-cover-filter .form-group .bootstrap-select .ui-datepicker-buttonpane button, .ui-datepicker-buttonpane .inventor-cover-filter .form-group .bootstrap-select button, .inventor-cover-filter .form-group .bootstrap-select .cmb-row.postbox .cmb-remove-group-row, .cmb-row.postbox .inventor-cover-filter .form-group .bootstrap-select .cmb-remove-group-row, .inventor-cover-filter .form-group .bootstrap-select .listing-create, .inventor-cover-filter .form-group .bootstrap-select .listings-slider-item-info-more a, .listings-slider-item-info-more .inventor-cover-filter .form-group .bootstrap-select a, .inventor-cover-filter .form-group .bootstrap-select .payment-process, .inventor-cover-filter .form-group .bootstrap-select .inventor-slider-item-info-button a, .inventor-slider-item-info-button .inventor-cover-filter .form-group .bootstrap-select a, .inventor-cover-filter .form-group .bootstrap-select .btn-create-collection, .inventor-cover-filter .form-group .bootstrap-select button {
+	padding: 9px 20px;
+}
+.inventor-cover-filter .form-group .dropdown-toggle, .inventor-cover-filter .form-group > input {
+	border-color: #fff !important;
+}
+.inventor-cover-filter .form-group .form-control, .inventor-cover-filter .form-group input[type=text], .inventor-cover-filter .form-group input[type=email], .inventor-cover-filter .form-group input[type=number], .inventor-cover-filter .form-group input[type=url], .inventor-cover-filter .form-group input[type=date], .inventor-cover-filter .form-group input[type=password], .inventor-cover-filter .form-group textarea {
+	-webkit-appearance: initial;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.15);
+	height: 49px;
+}
+.bootstrap-select {
+	width: 100% !important;
+}
+.bootstrap-select.form-control {
+	margin-bottom: 0px;
+	padding: 0;
+	border: none;
+}
+.bootstrap-select > .dropdown-toggle {
+	width: 100%;
+	padding-right: 25px;
+}
+.btn-group > .btn, .btn-group > input[type=submit], .btn-group > button, .ui-datepicker-buttonpane .btn-group > button, .cmb-row.postbox .btn-group > .cmb-remove-group-row, .btn-group > .listing-create, .listings-slider-item-info-more .btn-group > a, .btn-group > .payment-process, .inventor-slider-item-info-button .btn-group > a, .btn-group > .btn-create-collection, .btn-group-vertical > .btn, .btn-group-vertical > input[type=submit], .btn-group-vertical > button, .ui-datepicker-buttonpane .btn-group-vertical > button, .cmb-row.postbox .btn-group-vertical > .cmb-remove-group-row, .btn-group-vertical > .listing-create, .listings-slider-item-info-more .btn-group-vertical > a, .btn-group-vertical > .payment-process, .inventor-slider-item-info-button .btn-group-vertical > a, .btn-group-vertical > .btn-create-collection {
+	position: relative;
+	float: left;
+}
+.bootstrap-select .dropdown-toggle {
+	background-color: #fff !important;
+	border: 1px solid #e9e9e9 !important;
+	height: 40px;
+}
+.btn-group > :first-child.btn, .btn-group > input[type=submit]:first-child, .btn-group > button:first-child, .ui-datepicker-buttonpane .btn-group > button:first-child, .cmb-row.postbox .btn-group > :first-child.cmb-remove-group-row, .btn-group > :first-child.listing-create, .listings-slider-item-info-more .btn-group > a:first-child, .btn-group > :first-child.payment-process, .inventor-slider-item-info-button .btn-group > a:first-child, .btn-group > :first-child.btn-create-collection {
+	margin-left: 0px;
+}
+ul, ol {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0px;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	list-style: none;
+	font-size: 14px;
+	text-align: left;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0px 6px 12px rgba(0,0,0,0.175);
+	background-clip: padding-box;
+}
+div.dropdown-menu {
+	border: 1px solid #e9e9e9;
+	border-radius: 0;
+	box-shadow: none;
+	margin-top: -2px;
+	padding: 0;
+	top: 110% !important;
+	bottom: auto !important;
+}
+ul.dropdown-menu {
+	font-size: 12px;
+}
+.widget ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.open > .dropdown-menu {
+	display: block;
+}
+.inventor-cover-filter .dropdown-menu {
+	border-color: #fff;
+}
+.bootstrap-select.btn-group .dropdown-menu {
+	min-width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.bs-actionsbox, .bs-donebutton, .bs-searchbox {
+	padding: 4px 8px;
+}
+.bootstrap-select .bs-searchbox {
+	padding: 4px;
+}
+.inventor-cover-filter .form-group .bootstrap-select .bs-searchbox {
+	padding: 4px;
+}
+.bootstrap-select.btn-group .dropdown-menu.inner {
+	position: static;
+	float: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+ul.dropdown-menu li {
+	border: 0 !important;
+	margin: 0;
+	padding: 0;
+}
+.widget ul li {
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+	padding: 8px 0;
+}
+.widget .dropdown-menu li {
+	border-bottom: none;
+	padding: 0;
+}
+ul.dropdown-menu li.selected {
+	background-color: #e9e9e9;
+}
+.bootstrap-select.btn-group .dropdown-menu li {
+	position: relative;
+}
+.dropdown-menu > li > a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.4285;
+	color: #333333;
+	white-space: nowrap;
+}
+ul.dropdown-menu li a {
+	border: 0 !important;
+	color: #868686;
+	padding: 8px 15px;
+	transition: background-color .15s linear;
+}
+.bootstrap-select.btn-group .dropdown-menu li a {
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.bootstrap-select.btn-group .dropdown-menu li a span.text {
+	display: inline-block;
+}
+.bootstrap-select.btn-group .dropdown-menu li a span.check-mark {
+	display: none;
+}
+input[type=text], input[type=email], input[type=number], input[type=url], input[type=date], input[type=password], textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	padding-left: 12px;
+}
+.bs-searchbox .form-control {
+	margin-bottom: 0px;
+	width: 100%;
+	float: none;
+}
+.inventor-cover-filter .form-group .bootstrap-select .bs-searchbox .form-control, .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox input[type=text], .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox input[type=email], .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox input[type=number], .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox input[type=url], .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox input[type=date], .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox input[type=password], .inventor-cover-filter .form-group .bootstrap-select .bs-searchbox textarea {
+	box-shadow: none;
+	padding: 6px 40px;
+}
+.pull-left {
+	float: left;
+}
+.pull-left {
+	float: left !important;
+}
+.pull-left {
+	float: left;
+}
+.bootstrap-select .dropdown-toggle .filter-option {
+	width: 95% !important;
+}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	text-align: left;
+}
+.bootstrap-select i {
+	font-size: 9px;
+	vertical-align: 2px;
+}
+#video-wrap {
+	height: 100%;
+}
+#video-wrap {
+	height: 100%;
+}
+.video-wrapper-overlay {
+	background-color: #242424;
+	bottom: 0px;
+	content: "";
+	display: block;
+	left: 0px;
+	position: absolute;
+	opacity: 0.4;
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+}
+.video-wrapper-overlay {
+	background-color: #242424;
+	bottom: 0px;
+	content: "";
+	display: block;
+	left: 0px;
+	position: absolute;
+	opacity: 0.4;
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+}

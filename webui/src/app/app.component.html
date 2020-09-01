@@ -1,4 +1,4 @@
-<div class="p-2">
+<!-- <div class="p-2">
     <div *ngIf="party$ | async; let party">
         <table class="table table-sm">
         <tr>
@@ -15,9 +15,23 @@
         </tr>
         </table>
     </div>
-    <!-- <table class="table table-sm">
-    <tr><th>Name</th><td>{{party?.name | async }}</td></tr>
-    <tr><th>Category</th><td>{{party?.category | async }}</td></tr>
-    <tr><th>Description</th><td>{{party?.description | async }}</td></tr>
-    </table> -->
-</div>
+</div> -->
+
+<div class="container-scroller">
+    <app-navbar *ngIf="showNavbar"></app-navbar>
+    <div class="container-fluid page-body-wrapper">
+      <app-sidebar *ngIf="showSidebar"></app-sidebar>
+      <div class="main-panel" [ngClass]="{ 'main-panel-only' : !showSidebar }">
+        <div class="content-wrapper">
+          <app-spinner *ngIf="isLoading"></app-spinner>
+          <div contentAnimate *ngIf="!isLoading" class="h-100">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <app-footer *ngIf="showFooter"></app-footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>

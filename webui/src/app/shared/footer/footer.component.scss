@@ -1,0 +1,395 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+	display: block;
+}
+.footer {
+	color: #fff;
+	display: table-row;
+	font-size: 13px;
+	height: 1px;
+}
+.page-wrapper {
+	background-color: #fafafa;
+	display: table;
+	height: 100%;
+	overflow: hidden;
+	table-layout: fixed;
+	width: 100%;
+}
+body {
+	margin: 0;
+}
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 1.4285;
+	color: #333333;
+	background-color: #fff;
+}
+body {
+	background-color: #fff;
+	color: #868686;
+	font-family: "Roboto",Arial,sans-serif;
+	font-size: 14px;
+	height: 100%;
+	overflow-x: hidden;
+	width: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+body.custom-background {
+	background-image: url("https://klickon.ca/klickon/wp-content/uploads/2017/12/Street-of-suburb-areas.jpg");
+	background-position: left top;
+	background-size: auto;
+	background-repeat: repeat;
+	background-attachment: scroll;
+}
+html {
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+html {
+	font-size: 10px;
+	-webkit-tap-highlight-color: transparent;
+}
+html {
+	height: 100%;
+}
+.footer-top {
+	background-color: #282828;
+	margin-top: 30px;
+}
+.footer-area {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 0 0 30px 0;
+}
+.container, .detail-banner .detail-banner-right.affix {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.footer-top-inner {
+	padding: 20px 0;
+}
+.footer-first {
+	float: left;
+}
+/* @media all and (max-width:767px) */
+.footer-first {
+	float: none;
+}
+:last-of-type.widget {
+	margin-bottom: 0px;
+}
+/* @media all and (max-width:767px) */
+.footer-top .widget {
+	padding: 8px 0;
+}
+.row, .listing-categories-cards, .listing-types-cards, .locations-posters, .listing-detail-resume-experience .listing-detail-resume-experience-levels, .blog #primary .content, .widget_faq .faq, .tab-content ul, .video-cover-filter form, .submission-choose-type ul, .user-list, .user-listings, .applicants-list, .inventor-cover-filter form {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .items-per-row-6 .item-container, .items-per-row-6 .listing-container, .items-per-row-6 .listing-categories-card-container, .items-per-row-6 .listing-types-card-container, .items-per-row-6 .location-poster-container, .items-per-row-6 .user-container, .items-per-row-6 .applicant-container, .inventor-cover-filter.items-per-row-6 .form-group, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .items-per-row-4 .item-container, .items-per-row-4 .listing-container, .items-per-row-4 .listing-categories-card-container, .items-per-row-4 .listing-types-card-container, .items-per-row-4 .location-poster-container, .items-per-row-4 .user-container, .items-per-row-4 .applicant-container, .tab-content li, .inventor-cover-filter.items-per-row-4 .form-group, .col-lg-3, #primary .widget_filter .form-group, .filter .checkbox-wrapper .checkbox, .col-xs-4, .col-sm-4, .tab-content li, .col-md-4, #primary .widget_filter .form-group, .items-per-row-3 .item-container, .items-per-row-3 .listing-container, .items-per-row-3 .listing-categories-card-container, .items-per-row-3 .listing-types-card-container, .items-per-row-3 .location-poster-container, .items-per-row-3 .user-container, .items-per-row-3 .applicant-container, .listing-detail-resume-experience .listing-detail-resume-experience-level, .post-masonry, .filter .checkbox-wrapper .checkbox, .video-cover-filter .form-group, .submission-choose-type ul li, .inventor-cover-filter .form-group, .inventor-cover-filter.items-per-row-3 .form-group, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, #primary .widget_filter .form-group, .filter .checkbox-wrapper .checkbox, .submission-choose-type ul li, .col-md-6, .items-per-row-2 .item-container, .items-per-row-2 .listing-container, .items-per-row-2 .listing-categories-card-container, .items-per-row-2 .listing-types-card-container, .items-per-row-2 .location-poster-container, .items-per-row-2 .user-container, .items-per-row-2 .applicant-container, .widget_faq .faq-item-wrapper, .inventor-cover-filter.items-per-row-2 .form-group, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .items-per-row-1 .item-container, .items-per-row-1 .listing-container, .items-per-row-1 .listing-categories-card-container, .items-per-row-1 .listing-types-card-container, .items-per-row-1 .location-poster-container, .items-per-row-1 .user-container, .items-per-row-1 .applicant-container, .post-row, .filter-vertical .video-cover-filter .form-group, .filter-vertical .inventor-cover-filter .form-group, .inventor-cover-filter.items-per-row-1 .form-group, .col-lg-12 {
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+h1, h2, .comment-reply-title, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+}
+h1, .h1, h2, .comment-reply-title, .h2, h3, .h3 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+h2, .comment-reply-title, .h2 {
+	font-size: 30px;
+}
+h1, h2, .comment-reply-title, h3, h4, h5, h6 {
+	color: #363636;
+}
+h1, h2, .comment-reply-title, h3 {
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+h2, .comment-reply-title {
+	font-size: 26px;
+}
+.footer-top h2, .footer-top .comment-reply-title {
+	color: #fff !important;
+	font-size: 20px !important;
+	font-weight: 300;
+	margin: 0 0 30px 0;
+}
+.widget .widgettitle {
+	color: #363636;
+	font-size: 36px;
+	font-weight: 300;
+	margin: 0 0 60px;
+	padding: 0;
+	text-align: center;
+}
+.footer-top h2.widgettitle, .footer-top .widgettitle.comment-reply-title {
+	margin: 45px 0 !important;
+}
+.footer-top .widget .widgettitle, .footer-bottom .widget .widgettitle, .sidebar .widget .widgettitle {
+	border-bottom: 1px solid #e9e9e9;
+	color: #868686;
+	font-size: 20px;
+	line-height: 60px;
+	margin: 0 0 30px 0;
+	text-align: left;
+}
+.footer-top .widget .widgettitle, .footer-bottom .widget .widgettitle {
+	border-bottom: none;
+	line-height: 1.1;
+	font-weight: 400;
+	padding-left: 9px;
+}
+ul, ol {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.widget ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.nav, .footer-top .widget.widget_nav_menu ul, .footer-bottom .widget.widget_nav_menu ul {
+	margin-bottom: 0px;
+	padding-left: 0px;
+	list-style: none;
+}
+.footer-top li {
+	margin-right: 20px;
+}
+.widget ul li {
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+	padding: 8px 0;
+}
+.widget.widget_archive ul li, .widget.widget_categories ul li, .widget.widget_pages ul li, .widget.widget_nav_menu ul li, .widget.widget_recent_entries ul li, .widget.widget_meta ul li {
+	border-bottom: none;
+	padding-bottom: 0px;
+}
+.nav > li, .footer-top .widget.widget_nav_menu ul > li, .footer-bottom .widget.widget_nav_menu ul > li {
+	position: relative;
+	display: block;
+}
+.nav-pills > li, .footer-top .widget.widget_nav_menu ul > li, .footer-bottom .widget.widget_nav_menu ul > li {
+	float: left;
+}
+.footer-top .widget.widget_nav_menu ul li, .footer-bottom .widget.widget_nav_menu ul li {
+	padding: 0;
+}
+.footer-area .widget.widget_nav_menu ul li {
+	display: block;
+	float: none;
+	margin: 0;
+}
+.nav-pills > li + li, .footer-top .widget.widget_nav_menu ul > li + li, .footer-bottom .widget.widget_nav_menu ul > li + li {
+	margin-left: 2px;
+}
+/* @media all and (max-width:767px) */
+.footer-top .widget.widget_nav_menu ul.menu li {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	display: block;
+	float: none;
+	margin: 0;
+}
+a {
+	background-color: transparent;
+}
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+a {
+	color: #f2944e;
+	transition: color .15s linear;
+}
+i, a {
+	transition: all linear .15s;
+}
+.footer-top a {
+	color: #fff !important;
+}
+.footer-top li a {
+	line-height: 40px !important;
+}
+.widget.widget_archive ul li a, .widget.widget_categories ul li a, .widget.widget_pages ul li a, .widget.widget_nav_menu ul li a, .widget.widget_recent_entries ul li a, .widget.widget_meta ul li a {
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+	color: #868686;
+	line-height: 26px;
+	display: block;
+	padding-bottom: 8px;
+	transition: all .15s linear;
+}
+.nav > li > a, .footer-top .widget.widget_nav_menu ul > li > a, .footer-bottom .widget.widget_nav_menu ul > li > a {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+}
+.nav-pills > li > a, .footer-top .widget.widget_nav_menu ul > li > a, .footer-bottom .widget.widget_nav_menu ul > li > a {
+	border-radius: 4px;
+}
+.widget.widget_archive ul li:last-child a, .widget.widget_categories ul li:last-child a, .widget.widget_pages ul li:last-child a, .widget.widget_nav_menu ul li:last-child a, .widget.widget_recent_entries ul li:last-child a, .widget.widget_meta ul li:last-child a {
+	border-bottom: 0;
+}
+.footer-top .widget.widget_nav_menu ul li a, .footer-bottom .widget.widget_nav_menu ul li a {
+	border-bottom: none;
+	line-height: 1.9;
+	padding: 0 20px;
+}
+.footer-area .widget.widget_nav_menu ul li a {
+	color: rgba(255, 255, 255, 0.6) !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer-top .widget.widget_nav_menu .menu li a {
+	padding: 0;
+	margin-right: 30px;
+}
+/* @media all and (max-width:767px) */
+.footer-top .widget.widget_nav_menu ul.menu li a {
+	display: block;
+	padding: 3px 0;
+}
+.footer-area .widget.widget_nav_menu ul li:last-child a {
+	border: 0;
+}
+b, strong {
+	font-weight: bold;
+}
+ul#menu-social-menu {
+	margin-left: 35px;
+}
+ul#menu-social-menu li {
+	display: inline-block;
+}
+// [class^='icon-'], [class*=' icon-'] {
+// 	font-family: FontAwesome;
+// 	font-weight: normal;
+// 	font-style: normal;
+// 	text-decoration: inherit;
+// 	-webkit-font-smoothing: antialiased;
+// 	*margin-right:.3em: ;
+// }
+.icon-2x {
+	font-size: 2em;
+}
+[class^='icon-'], [class*=' icon-'] {
+	display: inline;
+	width: auto;
+	height: auto;
+	line-height: normal;
+	vertical-align: baseline;
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	margin-top: 0px;
+}
+a [class^='icon-'], a [class*=' icon-'] {
+	display: inline;
+}
+.widget.widget_archive ul li a i, .widget.widget_categories ul li a i, .widget.widget_pages ul li a i, .widget.widget_nav_menu ul li a i, .widget.widget_recent_entries ul li a i, .widget.widget_meta ul li a i {
+	color: #363636;
+	margin-right: 5px;
+}
+.footer-top .widget.widget_nav_menu .menu li a i {
+	background-color: #f2944e;
+	border-radius: 50%;
+	font-size: 12px;
+	height: 24px;
+	line-height: 25px;
+	margin-right: -15px;
+	text-align: center;
+	width: 24px;
+}
+ul#menu-social-menu li a i {
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+	display: block;
+	line-height: 33px;
+	padding: 5px;
+	margin-right: -20px;
+}
+.fa-hidden {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.widget .textwidget {
+	line-height: 24px;
+}
+.footer .widget .textwidget {
+	color: rgba(255, 255, 255, 0.6);
+}
+dl {
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+.footer-area dl {
+	padding-left: 35px;
+	position: relative;
+}
+.fa, .fa-stack {
+	display: inline-block;
+}
+.fa {
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.footer-area dl .fa {
+	color: #f2944e;
+	font-size: 22px;
+	position: absolute;
+	left: 0px;
+	margin-top: 8px;
+	vertical-align: top;
+}
+.footer-area dl .fa {
+	margin-top: -2px !important;
+}
+p {
+	margin: 0 0 10px;
+}
+p {
+	line-height: 24px;
+}
+.footer-top p {
+	margin: 0;
+}
+dt, dd {
+	line-height: 1.4285;
+}
+dt {
+	font-weight: bold;
+}
+.footer-area dl dt {
+	color: rgba(255, 255, 255, 0.6);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	margin-top: 15px;
+	padding-top: 15px;
+}
+dd {
+	margin-left: 0px;
+}
+.footer-area dl dd {
+	color: rgba(255, 255, 255, 0.3);
+	font-size: 12px;
+	margin-top: 5px;
+}

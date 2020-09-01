@@ -4,6 +4,6 @@ namespace webapi.Models
 {
     public interface ICoupmanRepository
     {
-         IQueryable<Party> Parties {get;}
+         IQueryable<User> Users {get;}
     }
 }

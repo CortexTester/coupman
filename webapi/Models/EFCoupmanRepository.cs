@@ -9,6 +9,6 @@ namespace webapi.Models
         {
             context = ctx;
         }
-        public IQueryable<Party> Parties => context.Parties;
+        public IQueryable<User> Users => context.Users;
     }
 }
