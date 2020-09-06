@@ -17,6 +17,10 @@ using Microsoft.AspNetCore.Identity;
 using webapi.Services.EmailService;
 using Microsoft.AspNetCore.Http.Features;
 using webapi.Services.Utils;
+using webapi.Helpers;
+using AutoMapper;
+using webapi.Services;
+using webapi.Middleware;
 
 namespace webapi
 {
@@ -57,14 +61,17 @@ namespace webapi
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 4;
             });
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+                opt.TokenLifespan = TimeSpan.FromHours(24));
 
             //swagger
-            services.AddScoped<ICoupmanRepository, EFCoupmanRepository>();
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "coupman API", Version = "v1" });
             });
+
+
 
             //smtp email
             services.AddSingleton(Configuration
@@ -80,10 +87,14 @@ namespace webapi
             });
 
             //app setting
-            services.AddSingleton(Configuration
-                .GetSection("ApplicationSettings")
-                .Get<ApplicationSettings>());
+               services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            // services.AddSingleton(Configuration
+            //      .GetSection("AppSettings")
+            //      .Get<AppSettings>());
 
+            //automapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<IAccountService, AccountService>();
 
             services.AddCors();
             services.AddControllers().AddJsonOptions(opts =>
@@ -105,6 +116,10 @@ namespace webapi
             app.UseRouting();
             app.UseCors(builder => builder.SetIsOriginAllowed(isOriginAllowed => true)
             .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseAuthentication();
             app.UseAuthorization();

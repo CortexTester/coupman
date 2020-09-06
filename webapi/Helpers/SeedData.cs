@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace webapi.Models
+namespace webapi.Helpers
 {
     public static class SeedData
     {

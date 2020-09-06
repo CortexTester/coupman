@@ -3,11 +3,13 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace webapi.Models
+namespace webapi.Entities
 {
     [JsonConverter(typeof(CustomStringToEnumConverter))]
     public enum Role
     {
+        [EnumMember(Value = "Administrator")]
+        Administrator,
         [EnumMember(Value = "Business")]
         Business,
         [EnumMember(Value = "Client")]

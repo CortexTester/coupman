@@ -15,6 +15,11 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertComponent } from './shared/alert/alert.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from "@app/helpers/error.interceptor";
+import { JwtInterceptor } from "@app/helpers/jwt.interceptor";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     LoginComponent,
     RegistrationComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       progressBar: true
     }),
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,3 +33,18 @@ dotnet ef database update
 
 ********Aug 24 *****
 DataContext is need to drop and recreate. becuase partyid and userid setting is wrong, it caused problem. but no time to correct for now
+
+***Sep 5***
+config of api and ui cannot be correctly read?
+to switch azure and local
+1. AccountsContorller.cs line 53 return Redirect("http://klickon.canadacentral.cloudapp.azure.com" + "/#/account/login");
+2. AccountService.cs line 96  var resetUrl = appSettings.Client_URL + $@"http://klickon.canadacentral.cloudapp.azure.com/#/account/reset-password?token={decodeToken}&email={model.Email}";
+3. environment.ts // export const environment = {
+//   production: false,
+//   apiUrl: 'http://klickon.canadacentral.cloudapp.azure.com:5051'
+// };
+
+***Sep 1st***Identity sample
+https://code-maze.com/asp-net-core-identity-series/
+https://jasonwatmore.com/post/2020/08/29/angular-10-boilerplate-email-sign-up-with-verification-authentication-forgot-password#account-layout-component-ts
+https://jasonwatmore.com/post/2020/07/06/aspnet-core-3-boilerplate-api-with-email-sign-up-verification-authentication-forgot-password
