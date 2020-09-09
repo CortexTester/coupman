@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '@app/services/account.service';
 import { AlertService } from '@app/services/alert.service';
 import { first } from 'rxjs/operators';
+import { Role } from '@app/models/role';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     });
   }
   get f() { return this.form.controls; }
+  
   onSubmit() {
     this.submitted = true;
 
@@ -44,10 +46,12 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.f.userName.value, this.f.password.value)
       .pipe(first())
       .subscribe({
-        next: () => {
+        next: (account) => {
           // get return url from query parameters or default to home page
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-          this.router.navigateByUrl(returnUrl);
+          if(this.route.snapshot.queryParams['returnUrl']) this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl']);
+          if(account.role == Role.Administrator) this.router.navigate(['/admin'])
+          if(account.role == Role.Business) this.router.navigate(['/business'])
+          if(account.role == Role.Client) this.router.navigate(['/client'])
         },
         error: error => {
           this.alertService.error(error);

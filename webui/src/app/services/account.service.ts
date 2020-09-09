@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Account } from '@app/models/account';
 import { environment } from '@environments/environment';
 import { map, finalize } from 'rxjs/operators';
+import { Role } from '@app/models/role';
 
 const baseUrl = `${environment.apiUrl}/accounts`;
 
@@ -35,6 +36,7 @@ export class AccountService {
         return account;
       }));
   }
+
   logout() {
     this.http.post<any>(`${baseUrl}/logout`, {}, { withCredentials: true }).subscribe();
     this.accountSubject.next(null);

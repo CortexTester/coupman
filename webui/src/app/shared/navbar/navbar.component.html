@@ -7,21 +7,50 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">JOIN AS PRO</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">LOGIN</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/registration']">SIGN UP NOW</a>
-            </li>
-        </ul>
-
-    </div>
+    <ng-template [ngIf]="!account">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/account/registerPro']">JOIN AS
+                        PRO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/account/login']">LOGIN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/account/register']">SIGN UP NOW</a>
+                </li>
+            </ul>
+        </div>
+    </ng-template>
+    <ng-template [ngIf]="account">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <ng-template [ngIf]="account.role==Role.Administrator">
+                    <a class="nav-link" href="#">USER MANAGEMENT</a>
+                </ng-template>
+                <ng-template [ngIf]="account.role==Role.Business">
+                    <a class="nav-link" href="#">CREATE NEW LISTING</a>
+                    <a class="nav-link" href="#">DASHBOARD</a>
+                </ng-template>
+                <ng-template [ngIf]="account.role==Role.Client">
+                    <a class="nav-link" href="#">JOIN AS PRO</a>
+                    <a class="nav-link" href="#">MY FAVORITES</a>
+                </ng-template>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()" href="#">LOG OUT</a>
+                </li>
+            </ul>
+        </div>
+    </ng-template>
 </nav>
+
+<!-- <ng-template [ngIf]="index == 1">First</ng-template>
+<ng-template [ngIf]="index == 2">Second</ng-template>
+<ng-template [ngIf]="index == 3">Third</ng-template> -->

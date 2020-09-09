@@ -4,18 +4,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
 
 namespace webapi.Models
 {
     public static class IdentitySeedData
     {
-        private const string adminUser = "admin";
-        private const string adminPassword = "MySecret123$";
+        // private const string adminUser = "admin";
+        // private const string adminPassword = "MySecret123$";
         private const string adminRole = "Administrator";
         private const string businessRole = "Business";
         private const string clientRole = "Client";
-        public static async Task SeedDatabase(IServiceProvider provider)
+        public static async Task SeedDatabase(IApplicationBuilder app)
         {
+            IServiceProvider provider = app.ApplicationServices.CreateScope().ServiceProvider;
+           
             IdentityDataContext identityDataContext = provider.GetRequiredService<IdentityDataContext>();
             if (identityDataContext.Database.GetPendingMigrations().Any())
             {
@@ -25,7 +28,7 @@ namespace webapi.Models
             UserManager<IdentityUser> userManager = provider.GetRequiredService<UserManager<IdentityUser>>();
             RoleManager<IdentityRole> roleManager = provider.GetRequiredService<RoleManager<IdentityRole>>();
             IdentityRole role = await roleManager.FindByNameAsync(adminRole);
-            IdentityUser user = await userManager.FindByNameAsync(adminUser);
+            // IdentityUser user = await userManager.FindByNameAsync(adminUser);
             if (role == null)
             {
                 role = new IdentityRole(adminRole);
@@ -50,28 +53,30 @@ namespace webapi.Models
                     + result.Errors.FirstOrDefault());
                 }
             }
-            if (user == null)
-            {
-                user = new IdentityUser(adminUser);
-                IdentityResult result
-                = await userManager.CreateAsync(user, adminPassword);
-                if (!result.Succeeded)
-                {
-                    throw new Exception("Cannot create user: "
-                    + result.Errors.FirstOrDefault());
-                }
-            }
+            // if (user == null)
+            // {
+            //     user = new IdentityUser(adminUser);
+            //     IdentityResult result
+            //     = await userManager.CreateAsync(user, adminPassword);
+            //     string token = userManager.GenerateEmailConfirmationTokenAsync(user).Result;
+            //     result = await userManager.ConfirmEmailAsync(user, token);
+            //     if (!result.Succeeded)
+            //     {
+            //         throw new Exception("Cannot create user: "
+            //         + result.Errors.FirstOrDefault());
+            //     }
+            // }
 
-            if (!await userManager.IsInRoleAsync(user, adminRole))
-            {
-                IdentityResult result
-                = await userManager.AddToRoleAsync(user, adminRole);
-                if (!result.Succeeded)
-                {
-                    throw new Exception("Cannot add user to role: "
-                    + result.Errors.FirstOrDefault());
-                }
-            }
+            // if (!await userManager.IsInRoleAsync(user, adminRole))
+            // {
+            //     IdentityResult result
+            //     = await userManager.AddToRoleAsync(user, adminRole);
+            //     if (!result.Succeeded)
+            //     {
+            //         throw new Exception("Cannot add user to role: "
+            //         + result.Errors.FirstOrDefault());
+            //     }
+            // }
         }
     }
 }

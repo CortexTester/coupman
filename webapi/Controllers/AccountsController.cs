@@ -32,15 +32,15 @@ namespace webapi.Controllers
         {
             try
             {
-                 var response = await accountService.Authenticate(model, ipAddress());
-            return Ok(response);
+                var response = await accountService.Authenticate(model, ipAddress());
+                return Ok(response);
             }
             catch (System.Exception e)
             {
                 logger.LogError(e.ToString());
                 throw;
             }
-           
+
         }
 
         [HttpPost("register")]
@@ -58,8 +58,8 @@ namespace webapi.Controllers
 
             if (!result) return BadRequest();
             logger.LogError("appSettings.Client_URL is " + appSettings.Client_URL);
-            //return Redirect(appSettings.Client_URL + "/#/account/login");
-            return Redirect("http://klickon.canadacentral.cloudapp.azure.com" + "/#/account/login");
+            return Redirect(appSettings.Client_URL + "/#/account/login");
+            // return Redirect("http://klickon.canadacentral.cloudapp.azure.com" + "/#/account/login");
         }
         [HttpPost("forgotPassword")]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest model)

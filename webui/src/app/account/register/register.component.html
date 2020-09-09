@@ -52,7 +52,7 @@
         </div>
         <div class="form-group form-check">
             <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-            <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+            <label for="acceptTerms" class="form-check-label"><a href="https://klickon.ca/terms-conditions/">Accept Terms & Conditions</a></label>
             <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
         </div>
         <div class="form-group">

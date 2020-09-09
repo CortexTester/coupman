@@ -30,7 +30,6 @@ namespace webapi.Services
         Task Register(RegisterRequest model, IUrlHelper url);
         Task<bool> VerifyEmail(string userId, string token);
         Task ForgotPassword(ForgotPasswordRequest model, IUrlHelper url);
-        void ValidateResetToken(ValidateResetTokenRequest model);
         Task<bool> ResetPassword(ResetPasswordRequest model);
 
         //account management
@@ -72,22 +71,13 @@ namespace webapi.Services
         public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model, string ipAddress)
         {
             var user = await userManager.FindByNameAsync(model.UserName);
-            if(user != null && !user.EmailConfirmed) throw new AppException("Please confirm your email before login.");
-            
+            if (user == null) throw new AppException("Cannot found " + model.UserName);
+            if (user != null && !user.EmailConfirmed) throw new AppException("Please confirm your email before login.");
+
             var result = await signinManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
-            if (user == null || !result.Succeeded)  throw new AppException("Email or password is incorrect");
+            if (!result.Succeeded) throw new AppException("Password is incorrect");
 
             return await GenerateToken(user);
-        }
-
-        public AccountResponse Create(CreateRequest model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            throw new System.NotImplementedException();
         }
 
         public async Task ForgotPassword(ForgotPasswordRequest model, IUrlHelper Url)
@@ -105,21 +95,6 @@ namespace webapi.Services
 
             await emailSender.SendEmailAsync(message);
 
-        }
-
-        public IEnumerable<AccountResponse> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public AccountResponse GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public AuthenticateResponse RefreshToken(string token, string ipAddress)
-        {
-            throw new System.NotImplementedException();
         }
 
         public async Task Register(RegisterRequest model, IUrlHelper url)
@@ -164,16 +139,6 @@ namespace webapi.Services
             await signinManager.SignOutAsync();
         }
 
-        public AccountResponse Update(int id, UpdateRequest model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void ValidateResetToken(ValidateResetTokenRequest model)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public async Task<bool> VerifyEmail(string userId, string token)
         {
             IdentityUser user = await userManager.FindByIdAsync(userId);
@@ -201,6 +166,7 @@ namespace webapi.Services
             var securityToken = tokenHandler.CreateToken(tokenDescriptor);
             var token = tokenHandler.WriteToken(securityToken);
             var response = mapper.Map<AuthenticateResponse>(account);
+            response.Role = role.FirstOrDefault();
             response.JwtToken = token;
             return response;
         }
@@ -212,6 +178,33 @@ namespace webapi.Services
             context.Accounts.Add(account);
             await context.SaveChangesAsync();
             return account;
+        }
+
+
+        //account management
+        public AccountResponse Create(CreateRequest model)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<AccountResponse> GetAll()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public AccountResponse GetById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public AccountResponse Update(int id, UpdateRequest model)
+        {
+            throw new NotImplementedException();
         }
     }
 

@@ -6,6 +6,7 @@ import { AccountService } from "@app/services/account.service";
 import { AlertService } from "@app/services/alert.service";
 import { MustMatch } from "@app/helpers/must-match.validator";
 import { first } from 'rxjs/operators';
+import { Role } from '@app/models/role';
 
 @Component({
   selector: 'app-register',
@@ -53,7 +54,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     let data = this.form.value
-    data.role = "Business"
+    data.role = Role.Client
     this.accountService.register(data)
         .pipe(first())
         .subscribe({

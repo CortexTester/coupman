@@ -1,22 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using webapi.Models;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
 using webapi.Services.EmailService;
 using Microsoft.AspNetCore.Http.Features;
-using webapi.Services.Utils;
 using webapi.Helpers;
 using AutoMapper;
 using webapi.Services;
@@ -87,7 +80,7 @@ namespace webapi
             });
 
             //app setting
-               services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             // services.AddSingleton(Configuration
             //      .GetSection("AppSettings")
             //      .Get<AppSettings>());
@@ -104,7 +97,7 @@ namespace webapi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -115,7 +108,9 @@ namespace webapi
 
             app.UseRouting();
             app.UseCors(builder => builder.SetIsOriginAllowed(isOriginAllowed => true)
-            .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
 
             app.UseMiddleware<ErrorHandlerMiddleware>();
 
@@ -137,8 +132,8 @@ namespace webapi
             });
 
             //demo only
-            SeedData.EnsurePopulated(app);
-            IdentitySeedData.SeedDatabase(services).Wait();
+            IdentitySeedData.SeedDatabase(app).Wait();
+            SeedData.EnsurePopulated(app).Wait();
             //end demo only
         }
     }
