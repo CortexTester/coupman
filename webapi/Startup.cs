@@ -5,15 +5,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using webapi.Models;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
-using webapi.Services.EmailService;
 using Microsoft.AspNetCore.Http.Features;
 using webapi.Helpers;
 using AutoMapper;
 using webapi.Services;
 using webapi.Middleware;
+using webapi.Infrastructure.Data;
+using webapi.Infrastructure.Services.EmailService;
+using webapi.Infrastructure.Repositories;
+using webapi.Infrastructure.Repositories.Base;
 
 namespace webapi
 {
@@ -32,15 +34,14 @@ namespace webapi
 
             services.AddDbContext<DataContext>(opts =>
             {
-                opts.UseNpgsql(
-                Configuration["ConnectionStrings:DefaultConnection"]);
+                opts.UseNpgsql(Configuration["ConnectionStrings:DefaultConnection"]);
             });
 
             //identity
             services.AddDbContext<IdentityDataContext>(opts =>
             {
-                opts.UseNpgsql(
-                Configuration["ConnectionStrings:IdentityConnection"]);
+                opts.UseNpgsql(Configuration["ConnectionStrings:IdentityConnection"])
+                .EnableSensitiveDataLogging();
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>()
@@ -64,14 +65,6 @@ namespace webapi
                     new OpenApiInfo { Title = "coupman API", Version = "v1" });
             });
 
-
-
-            //smtp email
-            services.AddSingleton(Configuration
-                .GetSection("EmailConfiguration")
-                .Get<EmailConfiguration>());
-            services.AddScoped<IEmailSender, SendGridSender>();
-
             services.Configure<FormOptions>(o =>
             {
                 o.ValueLengthLimit = int.MaxValue;
@@ -79,15 +72,7 @@ namespace webapi
                 o.MemoryBufferThreshold = int.MaxValue;
             });
 
-            //app setting
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-            // services.AddSingleton(Configuration
-            //      .GetSection("AppSettings")
-            //      .Get<AppSettings>());
-
-            //automapper
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<IAccountService, AccountService>();
+            ConfigureAspnetRunServices(services);
 
             services.AddCors();
             services.AddControllers().AddJsonOptions(opts =>
@@ -135,6 +120,26 @@ namespace webapi
             IdentitySeedData.SeedDatabase(app).Wait();
             SeedData.EnsurePopulated(app).Wait();
             //end demo only
+        }
+
+        private void ConfigureAspnetRunServices(IServiceCollection services)
+        {
+            //smtp email
+            services.AddSingleton(Configuration
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>());
+            services.AddScoped<IEmailSender, SendGridSender>();
+
+            //app setting
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            // services.AddSingleton(Configuration
+            //      .GetSection("AppSettings")
+            //      .Get<AppSettings>());
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ICouponRepositoty, CouponRepositoty>();
         }
     }
 }

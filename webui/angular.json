@@ -28,12 +28,9 @@
               "src/assets/images"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "src/styles.scss"
             ],
-            "scripts": [
-              "src/assets/js/admin-sidebar.js"
-            ]
+            "scripts": [ ]
           },
           "configurations": {
             "production": {

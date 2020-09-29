@@ -1,212 +1,59 @@
-using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using webapi.Controllers;
-using webapi.Entities;
-using webapi.Helpers;
-using webapi.Models;
-using webapi.Services.EmailService;
+using webapi.Infrastructure.Repositories;
+using webapi.Models.Auth;
+using webapi.Models.Account;
 
 namespace webapi.Services
 {
     public interface IAccountService
     {
-        //account Authentication
-        Task<AuthenticateResponse> Authenticate(AuthenticateRequest model, string ipAddress);
-        // AuthenticateResponse RefreshToken(string token, string ipAddress);
-        Task RevokeToken();
-        Task Register(RegisterRequest model, IUrlHelper url);
-        Task<bool> VerifyEmail(string userId, string token);
-        Task ForgotPassword(ForgotPasswordRequest model, IUrlHelper url);
-        Task<bool> ResetPassword(ResetPasswordRequest model);
-
-        //account management
-        IEnumerable<AccountResponse> GetAll();
-        AccountResponse GetById(int id);
-        AccountResponse Create(CreateRequest model);
-        AccountResponse Update(int id, UpdateRequest model);
-        void Delete(int id);
+        Task<IEnumerable<AccountResponse>> GetAll();
+        Task<AccountResponse> GetById(int id);
+        Task<AccountResponse> Create(CreateRequest model);
+        Task<AccountResponse> Update(int id, UpdateRequest model);
+        Task Delete(int id);
     }
     public class AccountService : IAccountService
     {
-        private SignInManager<IdentityUser> signinManager;
-        private UserManager<IdentityUser> userManager;
-        private DataContext context;
-        private IEmailSender emailSender;
+        IAccountRepository accountRepository;
+        private readonly ILogger logger;
         private readonly IMapper mapper;
-        AppSettings appSettings;
-        private IHttpContextAccessor httpContextAccessor;
-
-        private ILogger logger;
-        public AccountService(DataContext context,
-                              SignInManager<IdentityUser> signinManager,
-                              UserManager<IdentityUser> userManager,
-                              IEmailSender emailSender,
-                              IOptions<AppSettings> appSettings,
-                              IMapper mapper,
-                              IHttpContextAccessor httpContextAccessor,
-                              ILogger<AccountService> logger)
+        public AccountService(IAccountRepository accountRepository, 
+        IMapper mapper, 
+        ILogger<AccountService> logger)
         {
-            this.signinManager = signinManager;
-            this.userManager = userManager;
-            this.context = context;
-            this.emailSender = emailSender;
-            this.appSettings = appSettings.Value;
+            this.accountRepository = accountRepository;
             this.mapper = mapper;
-            this.httpContextAccessor = httpContextAccessor;
             this.logger = logger;
         }
-        public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model, string ipAddress)
-        {
-            var user = await userManager.FindByNameAsync(model.UserName);
-            if (user == null) throw new AppException("Cannot found " + model.UserName);
-            if (user != null && !user.EmailConfirmed) throw new AppException("Please confirm your email before login.");
-
-            var result = await signinManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
-            if (!result.Succeeded) throw new AppException("Password is incorrect");
-
-            return await GenerateToken(user);
-        }
-
-        public async Task ForgotPassword(ForgotPasswordRequest model, IUrlHelper Url)
-        {
-            var user = await userManager.FindByEmailAsync(model.Email);
-            if (user == null) throw new AppException($@"{model.Email} does not exist");
-
-            var token = await userManager.GeneratePasswordResetTokenAsync(user);
-            var decodeToken = HttpUtility.UrlEncode(token);
-            //  var resetUrl = appSettings.Client_URL + $@"/#/account/reset-password?token={decodeToken}&email={model.Email}";
-            var resetUrl = appSettings.Client_URL + $@"/#/account/reset-password?token={decodeToken}&email={model.Email}";
-            var message = new Message(new string[] { model.Email }, "Reset password",
-                $@"<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
-                             <p><a href=""{resetUrl}"">{resetUrl}</a></p>", null);
-
-            await emailSender.SendEmailAsync(message);
-
-        }
-
-        public async Task Register(RegisterRequest model, IUrlHelper url)
-        {
-            var applicationUser = new IdentityUser()
-            {
-                UserName = model.UserName,
-                Email = model.Email,
-            };
-            var result = await userManager.CreateAsync(applicationUser, model.Password);
-            if (!result.Succeeded && result.Errors.Any()) throw new AppException(result.Errors.First().Description);
-            result = await userManager.AddToRoleAsync(applicationUser, model.Role.ToString());
-
-            if (!result.Succeeded && result.Errors.Any()) throw new AppException(result.Errors.First().Description);
-            var account = await AddAccount(model, applicationUser.Id);
-            string confirmationToken = userManager.GenerateEmailConfirmationTokenAsync(applicationUser).Result;
-
-            string confirmationLink = url.Action("VerifyEmail", "Accounts",
-              new
-              {
-                  userid = applicationUser.Id,
-                  token = confirmationToken
-              },
-              httpContextAccessor.HttpContext.Request.Scheme);
-
-            var message = new Message(new string[] { model.Email }, "Registration successful", "Before you can login, please confirm your email, by clicking " + confirmationLink, null);
-
-            await emailSender.SendEmailAsync(message);
-        }
-
-        public async Task<bool> ResetPassword(ResetPasswordRequest model)
-        {
-            var user = await userManager.FindByEmailAsync(model.Email);
-            if (user == null) throw new AppException($@"{model.Email} does not exist");
-            //var decodeToken = HttpUtility.UrlDecode(model.Token); //not need to decode
-            var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
-            return result.Succeeded;
-        }
-
-        public async Task RevokeToken()
-        {
-            await signinManager.SignOutAsync();
-        }
-
-        public async Task<bool> VerifyEmail(string userId, string token)
-        {
-            IdentityUser user = await userManager.FindByIdAsync(userId);
-            IdentityResult result = await userManager.ConfirmEmailAsync(user, token);
-            return result.Succeeded;
-        }
-
-        private async Task<AuthenticateResponse> GenerateToken(IdentityUser user)
-        {
-            var role = await userManager.GetRolesAsync(user);
-            var account = context.Accounts.FirstOrDefault(x => x.IdentityId == user.Id);
-            IdentityOptions options = new IdentityOptions();
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                        new Claim("accountId",account.Id.ToString()),
-                        new Claim(options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-            var token = tokenHandler.WriteToken(securityToken);
-            var response = mapper.Map<AuthenticateResponse>(account);
-            response.Role = role.FirstOrDefault();
-            response.JwtToken = token;
-            return response;
-        }
-
-        private async Task<Account> AddAccount(RegisterRequest model, string identityId)
-        {
-            var account = mapper.Map<Account>(model);
-            account.IdentityId = identityId;
-            context.Accounts.Add(account);
-            await context.SaveChangesAsync();
-            return account;
-        }
-
-
-        //account management
-        public AccountResponse Create(CreateRequest model)
+        public Task<AccountResponse> Create(CreateRequest model)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(int id)
+        public Task Delete(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<AccountResponse> GetAll()
+        public async Task<IEnumerable<AccountResponse>> GetAll()
+        {
+            var accountList =  await accountRepository.GetAllAsync();
+            var mapped = mapper.Map<IEnumerable<AccountResponse>>(accountList);
+            return mapped;
+        }
+
+        public Task<AccountResponse> GetById(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public AccountResponse GetById(int id)
+        public Task<AccountResponse> Update(int id, UpdateRequest model)
         {
             throw new System.NotImplementedException();
-        }
-
-        public AccountResponse Update(int id, UpdateRequest model)
-        {
-            throw new NotImplementedException();
         }
     }
-
-
 }

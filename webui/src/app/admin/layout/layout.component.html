@@ -147,11 +147,11 @@
         </main>
     </div>
 </div> -->
-<!-- <div class="container"> -->
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-2 col-1 navBg pl-0 pr-0">
-            <nav class="nav  navbar-toggleable-sm">
-                <div class="navbar  flex-column mt-md-0  pt-md-0  p-0 w-100" id="navbarWEX">
+            <nav class="nav  navbar-toggleable-sm m-1">
+                <div class="navbar  flex-column mt-md-0  pt-md-0  p-1 w-100" id="navbarWEX">
                     <h1>Administrator</h1>
                     <a href="/#/admin" class="nav-link"><i class="fa fa-dashboard"> </i><span>Overview </span></a>
                     <a href="/#/admin" class="nav-link"><i class="fa fa-bar-chart"
@@ -162,16 +162,20 @@
                             aria-hidden="true"></i><span>Business</span></a>
                     <a href="/#/admin" class="nav-link"><i class="fa fa-users"
                             aria-hidden="true"></i><span>Client</span></a>
-                    <a href="/#/admin" class="nav-link"><i class="fa fa-plug" aria-hidden="true"></i><span>Plugins</span></a>
+                    <a href="/#/admin" class="nav-link"><i class="fa fa-plug"
+                            aria-hidden="true"></i><span>Plugins</span></a>
                     <a href="/#/admin" class="nav-link"><i class="fa fa-paper-plane"
                             aria-hidden="true"></i><span>Integration</span></a>
-                    <a href="/#/admin" class="nav-link"><i class="fa fa-cogs" aria-hidden="true"></i><span>Tools</span></a>
+                    <a href="/#/admin" class="nav-link"><i class="fa fa-cogs"
+                            aria-hidden="true"></i><span>Tools</span></a>
                 </div>
             </nav>
         </div>
-        <div >
-            <h2>Klickon administration will be worked on</h2>
-            <router-outlet></router-outlet>
+        <div class="col">
+            <div class="container">
+                <h2>Klickon administration will be worked on</h2>
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
-<!-- </div> -->
+</div>

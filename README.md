@@ -26,10 +26,18 @@ http://calman.canadacentral.cloudapp.azure.com:8080/
 
 
 ***entity framework 
-dotnet ef migrations add Initial
+dotnet ef migrations add -c IdentityDataContext init
+dotnet ef migrations add -c DataContext init
+
 dotnet ef database update
 
+***Sep 22***
+test coupon controller get all
 
+***Sep 21***
+account service -- get all
+change current AccountsController to AuthenticationContorller -- breake ui callback
+create a new AccountController
 
 ********Aug 24 *****
 DataContext is need to drop and recreate. becuase partyid and userid setting is wrong, it caused problem. but no time to correct for now

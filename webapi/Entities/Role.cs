@@ -5,38 +5,44 @@ using Newtonsoft.Json.Converters;
 
 namespace webapi.Entities
 {
-    [JsonConverter(typeof(CustomStringToEnumConverter))]
     public enum Role
     {
-        [EnumMember(Value = "Administrator")]
         Administrator,
-        [EnumMember(Value = "Business")]
         Business,
-        [EnumMember(Value = "Client")]
         Client
     }
+    // [JsonConverter(typeof(CustomStringToEnumConverter))]
+    // public enum Role
+    // {
+    //     [EnumMember(Value = "Administrator")]
+    //     Administrator,
+    //     [EnumMember(Value = "Business")]
+    //     Business,
+    //     [EnumMember(Value = "Client")]
+    //     Client
+    // }
 
-    public class CustomStringToEnumConverter : StringEnumConverter
-    {
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (string.IsNullOrEmpty(reader.Value?.ToString()))
-            {
-                return null;
-            }
+    // public class CustomStringToEnumConverter : StringEnumConverter
+    // {
+    //     public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    //     {
+    //         if (string.IsNullOrEmpty(reader.Value?.ToString()))
+    //         {
+    //             return null;
+    //         }
 
-            object parsedEnumValue;
+    //         object parsedEnumValue;
 
-            var isValidEnumValue = Enum.TryParse(objectType.GenericTypeArguments[0], reader.Value.ToString(), true, out parsedEnumValue);
+    //         var isValidEnumValue = Enum.TryParse(objectType.GenericTypeArguments[0], reader.Value.ToString(), true, out parsedEnumValue);
 
-            if (isValidEnumValue)
-            {
-                return parsedEnumValue;
-            }
-            else
-            {
-                return null;
-            }
-        }
-    }
+    //         if (isValidEnumValue)
+    //         {
+    //             return parsedEnumValue;
+    //         }
+    //         else
+    //         {
+    //             return null;
+    //         }
+    //     }
+    // }
 }

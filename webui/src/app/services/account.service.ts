@@ -8,7 +8,7 @@ import { environment } from '@environments/environment';
 import { map, finalize } from 'rxjs/operators';
 import { Role } from '@app/models/role';
 
-const baseUrl = `${environment.apiUrl}/accounts`;
+const baseUrl = `${environment.apiUrl}/authentication`;
 
 @Injectable({
   providedIn: 'root'

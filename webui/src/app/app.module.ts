@@ -8,7 +8,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,6 +19,7 @@ import { JwtInterceptor } from "@app/helpers/jwt.interceptor";
 import { AdminModule } from './admin/admin.module';
 import { BusinessModule } from './business/business.module';
 import { ClientModule } from './client/client.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { ClientModule } from './client/client.module';
     NavbarComponent,
     FooterComponent,
     SpinnerComponent,
-    SidebarComponent,
     AlertComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
