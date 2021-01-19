@@ -17,8 +17,8 @@ namespace webapi.Models.Coupon
         public bool IsSomeConditionApply { get; set; } = true;
         public bool IsNotValidWithOtherPromotion { get; set; } = true;
         public string CustomCondition { get; set; }
-        public List<CategoryMessage> CouponCategories { get; set; } = new List<CategoryMessage>();
-        public List<CityMessage> CouponCities { get; set; } = new List<CityMessage>();
+        public List<int> CouponCategories { get; set; } = new List<int>();
+        public List<int> CouponCities { get; set; } = new List<int>();
         [DataType(DataType.Date)]
         public string StartDate { get; set; }
         [DataType(DataType.Date)]

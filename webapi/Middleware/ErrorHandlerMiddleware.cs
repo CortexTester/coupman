@@ -10,7 +10,7 @@ namespace webapi.Middleware
 {
     public class ErrorHandlerMiddleware
     {
-                private readonly RequestDelegate _next;
+        private readonly RequestDelegate _next;
 
         public ErrorHandlerMiddleware(RequestDelegate next)
         {
@@ -28,7 +28,7 @@ namespace webapi.Middleware
                 var response = context.Response;
                 response.ContentType = "application/json";
 
-                switch(error)
+                switch (error)
                 {
                     case AppException e:
                         // custom application error

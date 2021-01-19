@@ -9,5 +9,6 @@ namespace webapi.Models.Auth
         public string LastName { get; set; }
         public string Role { get; set; }
         public string JwtToken { get; set; }
+        public string Status { get; set; }
     }
 }

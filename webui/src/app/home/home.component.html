@@ -1,7 +1,8 @@
 <header id="page-header">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 m-auto text-center">
+            <!-- <div class="col-md-6 m-auto text-center pt-5"> -->
+                <div class="col-md-6 m-auto text-center">
                 <h1>FIND THE BEST DEALS</h1>
                 <p>FROM SERVICE BASED PROFESSIONALS</p>
             </div>
@@ -12,16 +13,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <select class="form-control selectpicker" name="part" data-live-search="true" required>
-                    <option value="Select Part">Select Location </option>
-                    <option value="Cambridge" data-tokens="Cambridge">Cambridge</option>
-                    <option value="Guelph" data-tokens="Part 2">Guelph </option>
-                    <option value="Kitchener" data-tokens="Part 3">Kitchener</option>
-                    <option value="Waterloo" data-tokens="Part 4">Waterloo</option>
+                <!-- <select class="form-control selectpicker"  (change)="setCityId($event.target.value)" data-live-search="true" required>
+                    <option [value]="city.cityId" *ngFor="let city of cities">{{city.name}}</option>
+                </select> -->
+                <select class="form-control selectpicker" (change)="setCityId($event.target.value)"  name="part" data-live-search="true" required>
+                    <option value="0">Select Location </option>
+                    <option value="7" >Cambridge</option>
+                    <option value="13" >Guelph </option>
+                    <option value="19" >Kitchener</option>
+                    <option value="47" >Waterloo</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <select class="form-control selectpicker" name="part" data-live-search="true" required>
+                <select class="form-control selectpicker"  (change)="setCategoryId($event.target.value)" data-live-search="true" required>
+                    <option [value]="category.categoryId" *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+                <!-- <select class="form-control selectpicker" name="part" data-live-search="true" required>
                     <option value="Select Part">Select Category </option>
                     <option value="air-conditioning-and-cooling"> Air Conditioning And Cooling</option>
                     <option value="appliance-repair-and-service"> Appliance Repair and Service</option>
@@ -65,10 +72,10 @@
                     <option value="water-heater-services"> Water Heater Services</option>
                     <option value="window-cleaning"> Window Cleaning</option>
                     <option value="windows-and-doors"> Windows And Doors</option>
-                </select>
+                </select> -->
             </div>
             <div class="col-md-4">
-                <button class="form-control btn btn-primary  btn-block ">
+                <button type="submit" class="form-control btn btn-primary  btn-block " (click)="search()" [disabled]="selectedCategoryId===0 || selectedCityId===0">
                     <i class="fa fa-search"></i> Search
                 </button>
             </div>

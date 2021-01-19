@@ -140,6 +140,8 @@ namespace webapi
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ICouponRepositoty, CouponRepositoty>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
         }
     }
 }

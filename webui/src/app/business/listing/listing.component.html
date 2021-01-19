@@ -1,1 +1,88 @@
-<p>listing works!</p>
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Coupon List</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <!-- <a class="text-success" (click)="add()">
+          <i class="fa fa-plus fa-2x"></i>
+        </a> -->
+        <button type="button" class="btn bg-transparent text-success" tooltip="add new coupon" (click)="add(template)">
+          <i class="fa fa-plus fa-2x"></i>
+        </button>
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Edit</th>
+          <th class="text-center">Title</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">CustomCondition</th>
+          <th class="text-center">StartDate</th>
+          <th class="text-center">EndDate</th>
+          <th class="text-center">Remove</th>
+        </tr>
+        <tr *ngFor="let coupon of coupons; let id = index">
+          <td>
+            <!-- <span><a class="text-info" (click)="add()"><i class="fa fa-edit fa-2x"></i></a></span> -->
+            <button type="button" class="btn bg-transparent text-info" tooltip="edit coupon"
+              (click)="edit(template, coupon.couponId)" [disabled]="coupon.isEditing">
+              <span *ngIf="coupon.isEditing" class="spinner-border spinner-border-sm"></span>
+              <span *ngIf="!coupon.isEditing"><i class="fa fa-edit fa-2x"></i></span>
+            </button>
+          </td>
+          <td>
+            <span (keyup)="changeValue(id, 'title', $event)" (blur)="updateList(id, 'title', $event)"
+              contenteditable="true">{{coupon.title}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'status', $event)"
+              (blur)="updateList(id, 'status', $event)">{{coupon.status}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'customCondition', $event)"
+              (blur)="updateList(id, 'customCondition', $event)">{{coupon.customCondition}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'startDate', $event)"
+              (blur)="updateList(id, 'startDate', $event)">{{coupon.startDate}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'endDate', $event)"
+              (blur)="updateList(id, 'endDate', $event)">{{coupon.endDate}}</span>
+          </td>
+          <td>
+            <button type="button" class="btn bg-transparent text-danger" tooltip="delete coupon"
+              (click)="delete(coupon.couponId)" [disabled]="coupon.isDeleting">
+              <span *ngIf="coupon.isDeleting" class="spinner-border spinner-border-sm"></span>
+              <span *ngIf="!coupon.isDeleting"><i class="fa fa-trash fa-2x"></i></span>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->
+
+<!-- The Modal-->
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{formTitle}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <formly-form [form]="form" [fields]="fields" [model]="coupon" [options]="options"></formly-form>
+      <button type="button" mat-raised-button color="warn" (click)="options.resetModel()">Reset</button>
+      <button type="submit" mat-raised-button color="primary"><span *ngIf="coupon.isDeleting" class="spinner-border spinner-border-sm"></span>Submit</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>

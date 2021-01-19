@@ -40,6 +40,20 @@ namespace webapi.Controllers
             return Ok(mapper.Map<IEnumerable<CouponResponse>>(coupons));
         }
 
+        [HttpGet("getCouponsByAccountId")]
+        public async Task<ActionResult<IEnumerable<CouponResponse>>> getCouponsByAccountId()
+        {
+            //TODO: should move to service lever
+            var coupons = await repositoty.GetQueryable()
+                .Where(x => x.EndDate > DateTime.Now)
+                .Where(x => x.Status == CouponStatus.Active || x.Status == CouponStatus.Pending)
+                .Where(x => x.Account.AccountId == this.Account.AccountId)
+                .ToListAsync();
+
+
+            return Ok(mapper.Map<IEnumerable<CouponResponse>>(coupons));
+        }
+
         [HttpGet("GetCoupon/{id}")]
         public async Task<ActionResult<CouponResponse>> GetCoupon(int id)
         {
@@ -90,10 +104,20 @@ namespace webapi.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<CouponResponse>>> GetCouponsByCityCatogory([FromQuery]int cityId, [FromQuery]int categoryId)
+        {
+            var coupons = await repositoty.GetQueryable()
+            .Where(x => x.CouponCities.Any(p => p.CityId == cityId))
+            .Where(x => x.CouponCategories.Any(t => t.CategoryId == categoryId)).ToListAsync();
+            return Ok(mapper.Map<IEnumerable<CouponResponse>>(coupons));
+        }
+
         private Coupon map(CouponRequest request, Coupon coupon)
         {
             //TODO: should move to mapper
-            coupon.Account = this.context.Accounts.First(x => x.AccountId == 1); //this.Account,
+            coupon.Account = this.Account; //this.context.Accounts.First(x => x.AccountId == 1); 
             coupon.Title = request.Title;
             coupon.Status = CouponStatus.Pending;
             coupon.Description = request.Description;
@@ -110,8 +134,8 @@ namespace webapi.Controllers
             coupon.CouponCategories.Clear();
             coupon.CouponCities.Clear();
 
-            request.CouponCategories.ForEach(x => coupon.CouponCategories.Add(new CouponCategory() { Coupon = coupon, CategoryId = x.CategoryId }));
-            request.CouponCities.ForEach(x => coupon.CouponCities.Add(new CouponCity() { Coupon = coupon, CityId = x.CityId }));
+            request.CouponCategories.ForEach(x => coupon.CouponCategories.Add(new CouponCategory() { Coupon = coupon, CategoryId = x }));
+            request.CouponCities.ForEach(x => coupon.CouponCities.Add(new CouponCity() { Coupon = coupon, CityId = x }));
             return coupon;
         }
     }

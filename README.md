@@ -14,9 +14,14 @@ todo
         - ./script:/docker-entrypoint-initdb.d
 
 ***build images
+to deploy to azure
+1. change appsetting.Development.json in webapi to azure's db
+2. change environment.ts in webui to azure's api
 cd webapi -- docker build -t tester8cortex/coupman-api:0.0.1 .
 cd webui -- docker build -t tester8cortex/coupman-ui:0.0.1 .
 cd coupman docker-compose up
+
+docker push tester8cortex/coupman-api:0.0.1
 
 *** 
 http://calman.canadacentral.cloudapp.azure.com:8080/
@@ -30,6 +35,17 @@ dotnet ef migrations add -c IdentityDataContext init
 dotnet ef migrations add -c DataContext init
 
 dotnet ef database update
+
+***Oct 1***
+may can rmove from package.json
+ "@fortawesome/fontawesome-free": "^5.14.0",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@types/chart.js": "^2.9.24",
+    "angular-bootstrap-md": "^10.0.0",
+    "animate.css": "^4.1.1",
+    "chart.js": "^2.5.0",
+    "hammerjs": "^2.0.8",
+"@angular/localize": "^10.0.8",
 
 ***Sep 22***
 test coupon controller get all

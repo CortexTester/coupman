@@ -32,7 +32,7 @@ namespace webapi.Services
         Task<bool> VerifyEmail(string userId, string token);
         Task ForgotPassword(ForgotPasswordRequest model, IUrlHelper url);
         Task<bool> ResetPassword(ResetPasswordRequest model);
-        
+
     }
     public class AuthenticationService : IAuthenticationService
     {
@@ -107,7 +107,7 @@ namespace webapi.Services
             var account = await AddAccount(model, applicationUser.Id);
             string confirmationToken = userManager.GenerateEmailConfirmationTokenAsync(applicationUser).Result;
 
-            string confirmationLink = url.Action("VerifyEmail", "Accounts",
+            string confirmationLink = url.Action("VerifyEmail", "Authentication",
               new
               {
                   userid = applicationUser.Id,
@@ -170,6 +170,13 @@ namespace webapi.Services
         {
             var account = mapper.Map<Account>(model);
             account.IdentityId = identityId;
+            account.Status = AccountStatus.Empty;
+            account.Name = model.UserName;
+            if (model.Role == Role.Client.ToString())
+            {
+                account.FirstName = model.FirstName;
+                account.LastName = model.LastName;
+            }
             context.Accounts.Add(account);
             await context.SaveChangesAsync();
             return account;

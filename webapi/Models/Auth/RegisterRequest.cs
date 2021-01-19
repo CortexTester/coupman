@@ -3,7 +3,7 @@ using webapi.Entities;
 
 namespace webapi.Models.Auth
 {
-    public class RegisterRequest
+public class RegisterRequest
     {
          [Required]
         public string UserName { get; set; }

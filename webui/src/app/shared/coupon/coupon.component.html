@@ -1,0 +1,28 @@
+<!-- <div class="cardInner">
+    <div [style.grid-area]="'header'">
+      Header
+   </div>  <div [style.grid-area]="'side'">
+      Side 
+    </div>  <div [style.grid-area]="'content'">
+      Content
+    </div>  <div [style.grid-area]="'footer'">
+      Footer
+     </div>
+  </div> -->
+
+<div class="card ">
+  <div class="card-header bg-dark text-white text-center">
+    <h3>{{coupon.title}}</h3>
+  </div>
+  <div class="card-body">
+    <div class="inner_box"  [innerHTML]="coupon.description | safeHtml: 'html'" >
+    </div>
+    <!-- <textarea class="purple-border form-control" rows="10" >
+         {{coupon.description | safeHtml: 'html'}}
+      </textarea> -->
+    <a href="#" class="btn btn-danger btn-block mt-2 text-center ">More Detail</a>
+  </div>
+  <div class="card-footer text-muted text-center">
+    from:<b>{{coupon.startDate}}</b> to:<b>{{coupon.endDate}}</b>
+  </div>
+</div>

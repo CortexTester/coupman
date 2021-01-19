@@ -1,29 +1,46 @@
-<div class="row">
-    <div class="col-lg-2 col-1 navBg pl-0 pr-0">
-        <nav class="nav  navbar-toggleable-sm">
-            <div class="navbar  flex-column mt-md-0  pt-md-0  p-0 w-100" id="navbarWEX">
-                <h1>Business</h1>
-                <a href="/#/business" class="nav-link"><i class="fa fa fa-list"> </i><span>My Listings </span></a>
-                <a href="/#/business" class="nav-link"><i class="fa fa-bar-chart"
-                        aria-hidden="true"></i><span>Statistics</span></a>
-                <a href="/#/business" class="nav-link"><i class="fa fa-gg"
-                        aria-hidden="true"></i><span>Quotes</span></a>
-                <a href="/#/business" class="nav-link"><i class="fa fa-star " aria-hidden="true"></i><span>My
-                        Favorites</span></a>
-                <a href="/#/business" class="nav-link"><i class="fa fa-shield" aria-hidden="true"></i><span>Change
-                        Password</span></a>
-                <a href="/#/business" class="nav-link"><i class="fa fa-address-card-o " aria-hidden="true"></i><span>My
-                        Profile</span></a>
-            </div>
-        </nav>
-    </div>
-    <div class="col">
-        <div class="container">
-            <div style="padding: 2px;">
-                <h2>Business Dashboard will be worked on</h2>
-                <router-outlet></router-outlet>
-            </div>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-1 navBg pl-0 pr-0">
+      <nav class="nav  navbar-toggleable-sm">
+        <div class="navbar  flex-column mt-md-0  pt-md-0  p-0 w-100" id="navbarWEX">
+          <h1>Business</h1>
+          <a href="/#/business/coupons" class="nav-link" id="coupons" [ngClass]="{'isDisabled': profileOnly }">
+            <i class="fa fa fa-list"> </i><span>My Listings </span></a>
+          <a href="/#/business" class="nav-link isDisabled" id="statistics" [ngClass]="{'isDisabled': profileOnly }">
+            <i class="fa fa-bar-chart" aria-hidden="true"></i><span>Statistics</span></a>
+          <a href="/#/business" class="nav-link" id="qoutes" [ngClass]="{'isDisabled': profileOnly }">
+            <i class="fa fa-gg" aria-hidden="true"></i><span>Quotes</span></a>
+          <a href="/#/business" class="nav-link" id="favorites" [ngClass]="{'isDisabled': profileOnly }">
+            <i class="fa fa-star " aria-hidden="true"></i><span>My Favorites</span></a>
+          <a href="/#/business" class="nav-link" id="password" [ngClass]="{'isDisabled': profileOnly }">
+            <i class="fa fa-shield" aria-hidden="true"></i><span>Change Password</span></a>
+          <a href="/#/business/profile" class="nav-link" id="profile">
+            <i class="fa fa-address-card-o " aria-hidden="true"></i><span>My Profile</span></a>
         </div>
+      </nav>
     </div>
+    <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+      <!-- <div class="container">
+        <div class="row"> -->
+          <router-outlet></router-outlet>
+        <!-- </div>
+      </div> -->
+    </div>
+  </div>
 </div>
+<!-- <div class="layout-container">
+<mat-sidenav-container class="sidenav-container" [style.marginTop.px]="toolBarHeight">
+      <mat-sidenav #snav class="sidenav mat-elevation-z10" [(mode)]="sideNavMode" [(opened)]="sideNavOpened">
+        <mat-nav-list>
+            <a  mat-list-item  [routerLinkActive]="'active'"
+            routerLink="/#/business"> <mat-icon class="sidenav-icon">dashboard</mat-icon>
+                my lists</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <main class="main-container">
+          <router-outlet></router-outlet>
+        </main>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div> -->

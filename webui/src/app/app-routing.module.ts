@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from "./helpers/auth.guard";
 import { Role } from './models/role';
 import { HomeComponent } from './home/home.component';
+import { CouponsComponent } from './coupons/coupons.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const adminModule = () => import('./admin/admin.module').then(x => x.AdminModule);
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'admin', loadChildren: adminModule ,canActivate: [AuthGuard], data: { roles: [Role.Administrator] } },
   { path: 'business', loadChildren: businessModule, canActivate: [AuthGuard], data: { roles: [Role.Business] } },
   { path: 'client', loadChildren: clientModule, canActivate: [AuthGuard], data: { roles: [Role.Client] }},
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'coupons', component: CouponsComponent }
 
   // { path: '**', redirectTo: '' }
 ];

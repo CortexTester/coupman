@@ -1,0 +1,341 @@
+<h1  class="text-center">Business Profile</h1>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  
+  <mat-step [stepControl]="nameForm">
+    <form [formGroup]="nameForm">
+      <ng-template matStepLabel>General</ng-template>
+      <mat-form-field>
+        <mat-label>Business Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Business Description</mat-label>
+        <mat-quill [styles]="{height: '200px'}" formControlName="description"></mat-quill>
+      </mat-form-field>
+      <div align="end">
+        <button mat-raised-button color="primary"  matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="imagesForm">
+    <form [formGroup]="imagesForm">
+      <ng-template matStepLabel>Gallery</ng-template>
+        <div class="form-group">
+          <label for="file">Images</label>
+          <input formControlName="file" id="file" type="file" class="form-control" multiple=""
+            (change)="onFileChange($event)">
+          <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+            <div *ngIf="f.file.errors.required">File is required.</div>
+          </div>
+        </div>
+        <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />
+        <br />
+        <div align="end">
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="videosArray">
+    <form [formGroup]="videosArray">
+      <ng-template matStepLabel>Videos</ng-template>
+      <div >
+        <fieldset *ngFor="let video of videosArray.controls; index as i" >
+          <mat-form-field appearance="fill">
+            <mat-label>Video URL</mat-label>
+            <input matInput [formControl]="videosArray.controls[i]" >
+            <button matSuffix mat-icon-button  (click)="removeVideoUrl(i)" color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-form-field>
+        </fieldset>
+        <button mat-stroked-button (click)="addVideoUrl()" color="primary">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <br />
+      <div align="end">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="hoursArray">
+    <form [formGroup]="hoursArray">
+      <ng-template matStepLabel>Hours of Operation</ng-template>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Day</th>
+          <th class="text-center">Time from</th>
+          <th class="text-center">Time to</th>
+          <th class="text-center">Custom text</th>
+        </tr>
+        <tr *ngFor="let hour of hoursDataSource; let id = index">
+
+          <td>
+            <span (keyup)="changeValue(id, 'day', $event)" (blur)="updateList(id, 'day', $event)"
+              contenteditable="true">{{hour.day}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'from', $event)"
+              (blur)="updateList(id, 'from', $event)">{{hour.from}}</span>
+              <!-- <timepicker [(ngModel)]="{{hour.from}}"></timepicker> -->
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'to', $event)"
+              (blur)="updateList(id, 'to', $event)">{{hour.to}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'text', $event)"
+              (blur)="updateList(id, 'text', $event)">{{hour.text}}</span>
+          </td>
+        </tr>
+      </table>
+      <!-- <table mat-table [dataSource]="hoursDataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="day">
+          <th mat-header-cell *matHeaderCellDef> Day </th>
+          <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="from">
+          <th mat-header-cell *matHeaderCellDef> Time from </th>
+          <td mat-cell *matCellDef="let element;let index = index">
+            <editable (update)="updateField(index, 'from')">
+              <ng-template viewMode>
+                {{element.from}}
+              </ng-template>
+              <ng-template editMode>
+                <mat-form-field class="example-full-width">
+                  <input matInput [formControl]="getControl(index, 'from')">
+          <mat-error *ngIf="getControl(index, 'from').hasError('required')">
+             Field is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+              </ng-template>
+            </editable> 
+          </td>
+        
+          
+        </ng-container>
+      
+        <ng-container matColumnDef="to">
+          <th mat-header-cell *matHeaderCellDef> Time to </th>
+          <td mat-cell *matCellDef="let element;let index = index">
+              <editable (update)="updateField(index, 'to')">
+              <ng-template viewMode>
+                {{element.to}}
+              </ng-template>
+              <ng-template editMode>
+                <input  [formControl]="getControl(index, 'to')" focusable editableOnEnter>
+              </ng-template>
+            </editable> 
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="text">
+          <th mat-header-cell *matHeaderCellDef> Custome text </th>
+          <td mat-cell *matCellDef="let element;let index = index"> 
+              <editable (update)="updateField(index, 'text')">
+              <ng-template viewMode>
+              {{element.text}}
+              </ng-template>
+              <ng-template editMode>
+                <input  [formControl]="getControl(index, 'text')" focusable editableOnEnter>
+              </ng-template>
+            </editable> 
+             </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="hoursDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: hoursDisplayedColumns;"></tr>
+      </table> -->
+      <br />
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="contactForm.control">
+
+    <form #contactForm="ngForm">
+
+      <ng-template matStepLabel>Contact</ng-template>
+
+      <mat-form-field>
+
+        <mat-label>Amount</mat-label>
+
+        <input matInput placeholder="Amount">
+
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+
+        <mat-label>Stock</mat-label>
+
+        <input matInput placeholder="Stock">
+
+      </mat-form-field>
+
+      <br />
+
+      <div>
+
+        <button mat-button matStepperPrevious>Back</button>
+
+        <button mat-button matStepperNext>Next</button>
+
+      </div>
+
+    </form>
+
+  </mat-step>
+
+  <mat-step [stepControl]="socialForm.control">
+
+    <form #socialForm="ngForm">
+
+      <ng-template matStepLabel>Social</ng-template>
+
+      <mat-form-field>
+
+        <mat-label>Amount</mat-label>
+
+        <input matInput placeholder="Amount">
+
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+
+        <mat-label>Stock</mat-label>
+
+        <input matInput placeholder="Stock">
+
+      </mat-form-field>
+
+      <br />
+
+      <div>
+
+        <button mat-button matStepperPrevious>Back</button>
+
+        <button mat-button matStepperNext>Next</button>
+
+      </div>
+
+    </form>
+
+  </mat-step>
+
+  <mat-step [stepControl]="brandingForm.control">
+
+    <form #brandingForm="ngForm">
+
+      <ng-template matStepLabel>Branding</ng-template>
+
+      <mat-form-field>
+
+        <mat-label>Amount</mat-label>
+
+        <input matInput placeholder="Amount">
+
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+
+        <mat-label>Stock</mat-label>
+
+        <input matInput placeholder="Stock">
+
+      </mat-form-field>
+
+      <br />
+
+      <div>
+
+        <button mat-button matStepperPrevious>Back</button>
+
+        <button mat-button matStepperNext>Next</button>
+
+      </div>
+
+    </form>
+
+  </mat-step>
+
+  <mat-step [stepControl]="categoryForm.control">
+
+    <form #categoryForm="ngForm">
+
+      <ng-template matStepLabel>Categories</ng-template>
+
+      <mat-form-field>
+
+        <mat-label>Amount</mat-label>
+
+        <input matInput placeholder="Amount">
+
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+
+        <mat-label>Stock</mat-label>
+
+        <input matInput placeholder="Stock">
+
+      </mat-form-field>
+
+      <br />
+
+      <div>
+
+        <button mat-button matStepperPrevious>Back</button>
+
+        <button mat-button matStepperNext>Next</button>
+
+      </div>
+
+    </form>
+
+  </mat-step>
+
+  <mat-step>
+
+    <ng-template matStepLabel>Done</ng-template>
+
+    <p>You are now done.</p>
+
+
+    <div>
+
+      <button mat-button matStepperPrevious>Back</button>
+
+      <button mat-button (click)="stepper.reset()">Reset</button>
+
+      <button mat-button (click)="onSubmit()">Submit</button>
+
+    </div>
+
+  </mat-step>
+
+</mat-horizontal-stepper>
+
+<!-- <p>name: {{nameForm.value | json}}</p>
+<p>images: {{imagesForm.value | json}}</p>
+<p>videos: {{videosArray.value | json}}</p> -->

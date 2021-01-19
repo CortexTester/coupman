@@ -1,0 +1,24 @@
+:host {
+    display: block;
+    padding: 32px;
+    border: 1px solid black;
+    border-radius: 8px;
+  }
+
+  .cardInner {
+    display: grid;
+    grid-template-areas: "header header" "content content" "footer footer";
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+  }
+
+  .purple-border {
+    border: 1px solid chartreuse;
+}
+
+.inner_box{
+  overflow-y: auto;
+  max-height: 400px;
+  min-height: 400px;
+}

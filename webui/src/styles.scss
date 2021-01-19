@@ -1,1 +1,59 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-overlay-container { 
+    z-index: 1200; 
+}
+
+form .mat-raised-button  {
+    margin-right: 8px;
+  }
+
+  form  .mat-radio-label  {
+    margin-right: 8px;
+  }
+
+// formly-field-mat-radio {
+//     .mat-radio-group {
+//         display: inline-flex;
+//         flex-direction: column;
+//     }
+
+//     .mat-radio-button {
+//         margin: 5px;
+//     }
+// }
+
+.basic-container {
+  padding: 5px;
+}
+
+.display-flex { display: flex; }
+
+.flex-1 { flex: 1; }
+
+.flex-2 { flex: 2; }
+
+.flex-3 { flex: 3; }
+
+.flex-4 { flex: 4; }
+
+.flex-5 { flex: 5; }
+
+.flex-6 { flex: 6; }
+
+[class*="flex-"] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+[class*="flex-"]:first-child {
+  padding-left: 0;
+}
+
+[class*="flex-"]:nth-last-child(2) {
+  padding-right: 0;
+}

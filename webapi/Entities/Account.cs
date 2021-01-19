@@ -7,9 +7,8 @@ namespace webapi.Entities
     {
         Pending,
         Acvtive,
-        Rejected
-
-
+        Rejected,
+        Empty
     }
     public class Account : Entity
     {
